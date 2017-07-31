@@ -10,9 +10,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-    	Cart::destroy();
+    	// Cart::destroy();
 
-    	$product = Product::take(6)->get();
+    	$product = Product::take(10)->get();
 
     	return response()->json([
     		'product' => $product

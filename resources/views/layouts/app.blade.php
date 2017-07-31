@@ -38,8 +38,8 @@
                     <!-- Left Side Of Navbar -->
 
                     <ul class="nav navbar-nav">
-                        <a href="">
-                            <li>x items in cart $(200)</li>
+                        <a href="#">
+                            <li>@{{ $store.getters.cartItemCount }} items in cart $@{{ $store.getters.cartTotal }}</li>
                         </a>
                     </ul>
 

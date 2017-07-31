@@ -5,17 +5,15 @@ export const setProducts = (state, products) => {
 
 export const appendToCart = (state, product) => {
 	const existing = state.cart.find((item) => {
-		return item.product.id === product.id
+		return item.id === product.id
 	})
 
 	if (existing) {
 		existing.qty++
 	} else {
-		state.cart.push({
-			product,
-			qty : 1
-		})
+		state.cart.push(product)
 	}
+	
 }
 //set cart
 export const setCart = (state, items) => {
@@ -24,4 +22,13 @@ export const setCart = (state, items) => {
 
 //clear cart
 //remove from cart
-//appends to cart
+export const removeFromCart = (state, rowId) => {
+
+	state.cart = state.cart.filter((item) => {
+		return item.rowId !== rowId
+	})
+}
+//clear all cart
+export const clearCart = (state) => {
+	return state.cart = []
+}

@@ -17,7 +17,7 @@ Route::prefix('api')->group(function() {
 		Route::get('/', 'CartController@index');
 		Route::post('add', 'CartController@store');
 		Route::patch('update', 'CartController@update');
-		Route::delete('delete', 'CartController@delete');
+		Route::delete('delete/{rowId}', 'CartController@delete');
 		Route::delete('destroy', 'CartController@destroy');
 	});
 

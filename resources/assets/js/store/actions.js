@@ -6,6 +6,7 @@ export const getProducts = ({ commit }) =>  {
 	})
 }
 
+//add product to cart
 export const addProductToCart = ({ commit }, { product, quantity } ) => {
 	return axios.post('/api/cart/add', {
 		id : product.id,
@@ -16,6 +17,7 @@ export const addProductToCart = ({ commit }, { product, quantity } ) => {
 	})
 }
 
+//get cart
 export const getCart = ({ commit }) => {
 	return axios.get('/api/cart').then( (response) => {
 		console.log(response.data.product)
@@ -24,7 +26,16 @@ export const getCart = ({ commit }) => {
 	})
 }
 
-//add product to cart
 //remove product from cart
+export const removeProductFromCart = ({ commit }, rowId) => {
+	return axios.delete(`/api/cart/delete/${rowId}`).then((response)=> {
+		commit('removeFromCart', rowId)
+	})
+}
+
 //remove all product in cart
-//get cart
+export const clearCart = ({ commit }) => {
+	commit('clearCart')
+	return axios.delete('/api/cart/destroy')
+}
+
